@@ -18,14 +18,14 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test Admin',
             'email' => 'admin@example.com',
             'password' => 'admin@example.com',
-            'role' => 'ADMIN',
+            'role' => 'admin',
         ]);
 
         \App\Models\User::factory()->create([
             'name' => 'Test Staff',
             'email' => 'staff@example.com',
             'password' => 'staff@example.com',
-            'role' => 'STAFF',
+            'role' => 'staff',
         ]);
     }
 }
