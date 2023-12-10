@@ -4,6 +4,9 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -27,5 +30,19 @@ class DatabaseSeeder extends Seeder
             'password' => 'staff@example.com',
             'role' => 'staff',
         ]);
+
+        DB::table('item_categories')->insert([
+            'categoryName' => 'SparePart',
+        ]);
+
+        DB::table('items')->insert([
+            'categoryId' => '1',
+            'itemName' => 'Piston di-T',
+            'brand' => 'KUBOTA',
+            'description' => 'Piston RD85 di-T',
+            'stock' => 10,
+            'currentPrice' => 200000,
+        ]);
+
     }
 }

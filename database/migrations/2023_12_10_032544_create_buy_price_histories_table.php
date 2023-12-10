@@ -12,8 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('buy_price_histories', function (Blueprint $table) {
-            $table->id();
+            $table->id('buyPriceHistoryId');
+            $table->unsignedBigInteger('itemId');
+            $table->unsignedBigInteger('supplierId');
+            $table->integer('price');
+            $table->date('purchaseDate');
             $table->timestamps();
+
+            $table->foreign('itemId')->references('itemId')->on('items');
+            $table->foreign('supplierId')->references('supplierId')->on('suppliers');
         });
     }
 

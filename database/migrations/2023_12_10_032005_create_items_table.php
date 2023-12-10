@@ -13,13 +13,15 @@ return new class extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id('itemId');
-            $table->int('categoryId');
+            $table->unsignedBigInteger('categoryId');
             $table->string('itemName');
             $table->string('brand');
             $table->string('description');
-            $table->int('stock');
-            $table->int('currentPrice');
+            $table->integer('stock');
+            $table->integer('currentPrice');
             $table->timestamps();
+
+            $table->foreign('categoryId')->references('categoryId')->on('item_categories');
         });
     }
 

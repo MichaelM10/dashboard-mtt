@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Supplier extends Model
 {
+    public function supplierItem(): HasMany
+    {
+        return $this->hasMany(SupplierItem::class);
+    }
     use HasFactory;
 }
