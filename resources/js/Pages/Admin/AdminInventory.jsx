@@ -16,7 +16,7 @@ export default function AdminInventory({ auth, items }) {
 
             <div className="max-w-7xl mx-auto p-6 lg:p-8">
                 {/* Table */}
-                <div className="relative overflow-x-auto">
+                <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
@@ -30,13 +30,19 @@ export default function AdminInventory({ auth, items }) {
                                     Merk
                                 </th>
                                 <th scope="col" className="px-6 py-3">
+                                    Kategori
+                                </th>
+                                <th scope="col" className="px-6 py-3">
                                     Stok
                                 </th>
                                 <th scope="col" className="px-6 py-3">
                                     Harga Terkini ("todo:history harga")
                                 </th>
                                 <th scope="col" className="px-6 py-3">
-                                    Kategori
+                                    Shelf
+                                </th>
+                                <th scope="col" className="px-6 py-3">
+                                    Description
                                 </th>
                                 <th scope="col" className="px-6 py-3">
                                     Actions
@@ -50,7 +56,7 @@ export default function AdminInventory({ auth, items }) {
                                     item.currentPrice.toLocaleString("id-ID");
                                 return (
                                     <tr
-                                        className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                                        className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
                                         key={index}
                                     >
                                         <td className="px-6 py-4">
@@ -66,13 +72,19 @@ export default function AdminInventory({ auth, items }) {
                                             {item.brand}
                                         </td>
                                         <td className="px-6 py-4">
+                                            {item.item_category.categoryName}
+                                        </td>
+                                        <td className="px-6 py-4">
                                             {item.stock}
                                         </td>
                                         <td className="px-6 py-4">
                                             {"Rp " + formattedPrice}
                                         </td>
                                         <td className="px-6 py-4">
-                                            {item.item_category.categoryName}
+                                            {item.shelf}
+                                        </td>
+                                        <td className="px-6 py-4">
+                                            {item.description}
                                         </td>
                                         <td className="px-6 py-4">
                                             WorkInProgress
@@ -80,7 +92,6 @@ export default function AdminInventory({ auth, items }) {
                                     </tr>
                                 );
                             })}
-
                             {/* end of Loop */}
                         </tbody>
                     </table>

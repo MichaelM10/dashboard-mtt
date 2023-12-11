@@ -16,9 +16,10 @@ return new class extends Migration
             $table->unsignedBigInteger('categoryId');
             $table->string('itemName');
             $table->string('brand');
-            $table->string('description');
             $table->integer('stock');
             $table->integer('currentPrice');
+            $table->string('shelf');
+            $table->string('description');
             $table->timestamps();
 
             $table->foreign('categoryId')->references('categoryId')->on('item_categories');
