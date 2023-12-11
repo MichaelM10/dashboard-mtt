@@ -6,7 +6,7 @@ export default function AdminInventory({ auth, items }) {
         <AuthenticatedLayout
             user={auth.user}
             items = {items}
-            header={<h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Admin Dashboard</h2>}
+            header={<h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Inventory Management</h2>}
         >
             <Head title="Inventory Management" />
 
@@ -17,62 +17,60 @@ export default function AdminInventory({ auth, items }) {
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
                                 <th scope="col" class="px-6 py-3">
-                                    Product name
+                                    Id
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Color
+                                    Nama Item
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Category
+                                    Merk
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Price
+                                    Stok
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Harga Terkini ("todo:history harga")
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Kategori
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Actions
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    Apple MacBook Pro 17"
-                                </th>
-                                <td class="px-6 py-4">
-                                    Silver
-                                </td>
-                                <td class="px-6 py-4">
-                                    Laptop
-                                </td>
-                                <td class="px-6 py-4">
-                                    $2999
-                                </td>
-                            </tr>
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    Microsoft Surface Pro
-                                </th>
-                                <td class="px-6 py-4">
-                                    White
-                                </td>
-                                <td class="px-6 py-4">
-                                    Laptop PC
-                                </td>
-                                <td class="px-6 py-4">
-                                    $1999
-                                </td>
-                            </tr>
-                            <tr class="bg-white dark:bg-gray-800">
-                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    Magic Mouse 2
-                                </th>
-                                <td class="px-6 py-4">
-                                    Black
-                                </td>
-                                <td class="px-6 py-4">
-                                    Accessories
-                                </td>
-                                <td class="px-6 py-4">
-                                    $99
-                                </td>
-                            </tr>
+                            {/* Loop table rows */}
+                            {
+                                items.map((item, index) => {
+                                return(
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <td class="px-6 py-4">
+                                        {item.itemId}
+                                    </td>
+                                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        {item.itemName}
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        {item.brand}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {item.stock}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        Rp {item.currentPrice.toLocaleString('id-ID')}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {item.item_category.categoryName}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        WorkInProgress
+                                    </td>
+                                </tr>
+                                );
+                            })}
+                            
+                            {/* end of Loop */}
                         </tbody>
                     </table>
                 </div>

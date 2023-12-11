@@ -15,7 +15,7 @@ class AdminDashboardController extends Controller
 
     public function inventory(){
         error_log('Rendered Admin Inventory');
-        $items = Item::get();
+        $items = Item::with('itemCategory')->get();
 
         error_log($items);
 
