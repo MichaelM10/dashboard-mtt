@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('itemName');
             $table->string('brand');
             $table->integer('stock');
-            $table->integer('currentPrice');
+            $table->integer('latestPrice');
             $table->string('shelf');
             $table->string('description');
             $table->timestamps();

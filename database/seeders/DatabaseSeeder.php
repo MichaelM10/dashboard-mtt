@@ -41,7 +41,7 @@ class DatabaseSeeder extends Seeder
             'brand' => 'KUBOTA',
             'description' => 'Piston RD85 di-T',
             'stock' => 10,
-            'currentPrice' => 200000,
+            'latestPrice' => 200000,
         ]);
 
     }
